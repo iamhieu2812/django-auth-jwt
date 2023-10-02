@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+# Secret key file
+secret_key.txt
+
+# Database
+*.sqlite3
+*.db
+
+# Static files
+/staticfiles/
+
+# Media files
+/media/
+
+# Environment variables
+.env
+
+# IDE files (if you're using a specific IDE)
+.vscode/
+.idea/
+
+# Dependency directories
+venv/
+env/
+__env__/
+
+# Compiled Python files
+*.pyc
+
+# Ignore migrations (if you don't want to version control migrations)
+**/migrations/
