@@ -20,5 +20,7 @@ urlpatterns = [
     path('users/', views.user_list, name='user-list'),
     path('ban-user/', views.ban_user, name='ban-user'),
     
+    path('upload/', views.upload_image, name='upload-image'),
+    
     path('token/refresh/', CustomTokenRefreshView.as_view(), name='token_refresh'),
 ]

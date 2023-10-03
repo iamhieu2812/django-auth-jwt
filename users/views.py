@@ -3,8 +3,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import logout
-from users.models import CustomUser
-from .serializers import CustomUserSerializer
+from users.models import CustomUser, Image
+from .serializers import CustomUserSerializer, ImageSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .permissions import IsNotAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -240,3 +240,13 @@ def ban_user(request):
     target_user.save()
 
     return Response({'detail': f'User {target_user.username} has been banned'}, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def upload_image(request):
+    serializer = ImageSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
