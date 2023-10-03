@@ -99,7 +99,7 @@ DATABASES = {
         'NAME': 'mydb',             
         'USER': 'hieu',
         'PASSWORD': 'hieu2001', 
-        'HOST': 'mysql-svc',        
+        'HOST': '172.20.0.2',        
         'PORT': '3306',
     }
 }
