@@ -38,6 +38,3 @@ __env__/
 
 # Compiled Python files
 *.pyc
-
-# Ignore migrations (if you don't want to version control migrations)
-**/migrations/
