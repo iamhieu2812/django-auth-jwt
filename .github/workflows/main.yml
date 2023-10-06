@@ -19,7 +19,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          ENV_FILE: ${{ secrets.ENV_FILE }}
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/github
@@ -40,7 +39,7 @@ jobs:
         
       - name: Create or update env file in django-auth-jwt
         run: |
-          ssh target 'echo "$ENV_FILE" > django-auth-jwt/.env'
+          ssh target 'echo "${{ secrets.ENV_FILE }}" > django-auth-jwt/.env'
 
       - name: Run deploy
         run: |
