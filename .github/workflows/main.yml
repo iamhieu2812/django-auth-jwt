@@ -39,7 +39,7 @@ jobs:
 
       - name: Create or update env file in django-auth-jwt
         run: |
-          ssh target "echo '$ENV_FILE' > django-auth-jwt/.env"
+          ssh target "echo \"$ENV_FILE\" > django-auth-jwt/.env"
 
       - name: Run deploy
         run: |
