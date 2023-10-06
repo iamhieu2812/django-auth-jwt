@@ -47,4 +47,4 @@ jobs:
 
       - name: Run migrate
         run: |
-          ssh target "cd django-auth-jwt/ && docker-compose run --rm app python3 manage.py migrate"
+          ssh target "cd django-auth-jwt/ && docker-compose run --rm app manage.py migrate"
