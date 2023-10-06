@@ -31,6 +31,14 @@ jobs:
             LogLevel ERROR
             StrictHostKeyChecking no
           END
+
+      - name: Clone the repository
+        run: git clone https://github.com/iamhieu2812/django-auth-jwt.git
+
+      - name: Create or update env file in django-auth-jwt
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > django-auth-jwt/.env
+          
       - name: Run deploy
         run: |
           ssh target "cd django-auth-jwt/ && docker-compose down && git pull && docker-compose build && docker-compose up -d --force-recreate"
