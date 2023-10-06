@@ -35,7 +35,7 @@ jobs:
 
       - name: Clone the repository if it doesn't exist
         run: |
-          if [ ! -d "django-auth-jwt" ]; then
+          if [ ! -d "django-auth-jwt" ] && [ ! -f ".cloned_repo_flag" ]; then
             # Clone the repository into a temporary directory
             ssh target "git clone https://github.com/iamhieu2812/django-auth-jwt.git tmp_django_auth_jwt"
             
@@ -46,7 +46,11 @@ jobs:
               # If django-auth-jwt already exists, remove the temporary directory
               rm -rf tmp_django_auth_jwt
             fi
+            
+            # Create a flag file to indicate that the repository has been cloned
+            touch .cloned_repo_flag
           fi
+        
         
         
       - name: Create or update env file in django-auth-jwt
