@@ -44,3 +44,7 @@ jobs:
       - name: Run deploy
         run: |
           ssh target "cd django-auth-jwt/ && docker-compose down && git pull && docker-compose build && docker-compose up -d --force-recreate"
+
+      - name: Run migrate
+        run: |
+          ssh target "docker-compose exec app python manage.py migrate"
