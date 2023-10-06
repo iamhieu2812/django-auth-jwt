@@ -11,6 +11,10 @@ RUN apt-get install -y --no-install-recommends default-libmysqlclient-dev defaul
 # Cleanup apt cache
 RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Run migrations
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
 # ----------------------------
 # Multi Build from base image
 FROM base
