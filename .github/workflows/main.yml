@@ -33,13 +33,16 @@ jobs:
             StrictHostKeyChecking no
           END
 
-      - name: Clone the repository
+      - name: Clone the repository if it doesn't exist
         run: |
-          ssh target "git clone https://github.com/iamhieu2812/django-auth-jwt.git"
+          if [ ! -d "django-auth-jwt" ]; then
+            ssh target "git clone https://github.com/iamhieu2812/django-auth-jwt.git"
+          fi
+        
 
       - name: Create or update env file in django-auth-jwt
         run: |
-          ssh target "echo \"$ENV_FILE\" > django-auth-jwt/.env"
+          ssh target 'echo "$ENV_FILE" > django-auth-jwt/.env'
 
       - name: Run deploy
         run: |
