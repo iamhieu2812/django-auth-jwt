@@ -41,15 +41,16 @@ jobs:
             
             # Move the cloned repository to django-auth-jwt if it doesn't exist
             if [ ! -d "django-auth-jwt" ]; then
-              mv tmp_django_auth_jwt django-auth-jwt
+              ssh target "mv tmp_django_auth_jwt django-auth-jwt"
             else
               # If django-auth-jwt already exists, remove the temporary directory
-              rm -rf tmp_django_auth_jwt
+              ssh target "rm -rf tmp_django_auth_jwt"
             fi
             
             # Create a flag file to indicate that the repository has been cloned
-            touch .cloned_repo_flag
+            ssh target "touch .cloned_repo_flag"
           fi
+        
         
         
         
